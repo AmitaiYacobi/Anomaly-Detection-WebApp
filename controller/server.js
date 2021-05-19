@@ -23,8 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
-  var result = model.detect(
-      req.params.algorithm, req.params.trainCSV, req.params.testCSV);
+  var result = model.detect(req.params.algorithm, req.params.trainCSV, req.params.testCSV);
   res.write(result);
   res.end();
 });
