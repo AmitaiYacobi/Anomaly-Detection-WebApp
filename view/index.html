@@ -18,7 +18,7 @@
             <h1>Anomaly Detection Server</h1>
         </div>
     </nav>
-    <form action="/detect" method="POST" enctype="multipart/form-data" target="detection">
+    <form action="/detect" method="POST" enctype="multipart/form-data">
         <select id="algorithm-select" name="algo">
             <option value="0">Select Algorithm:</option>
             <option value="1" name="regression">Regression</option>
@@ -39,7 +39,6 @@
     </form>
     <br>
     <iframe name="detection" width="80%" height="500"></iframe>
-
 </body>
 
 </html>
