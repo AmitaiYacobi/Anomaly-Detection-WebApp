@@ -102,3 +102,4 @@ dist
 
 # TernJS port file
 .tern-port
+/.vs/Anomaly-Detection-WebApp/v16/ipch/AutoPCH/b3ac3f0000357c3e/GREETING.ipch

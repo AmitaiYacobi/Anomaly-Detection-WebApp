@@ -2,13 +2,21 @@ const {Console} = require('console');
 const express = require('express');
 const fs = require('fs');
 const d3 = require("d3")
-const jsonToTable = require('json-to-table');
+//const jsonToTable = require('json-to-table');
 let csvToJson = require('convert-csv-to-json');
 
 
 const app = express();
 
 app.use(express.static('..'));
+
+
+//////////////////////////////
+
+const algorithms = require('../addon');
+path = require('path')
+///////////////////////////////
+
 
 // Convert cs file into JSON
 function csvJSON(csv) {
@@ -36,29 +44,14 @@ async function sleep_sec(){
 }
 
 function detect(algorithm, trainCsvPath, testCsvPath) {
-  trainCsv = fs.readFileSync(trainCsvPath).toString();
-  testCsv = fs.readFileSync(testCsvPath).toString();
-  fs.writeFileSync('input.txt', algorithm, (err) => {
-    if (err) throw err;
-  });
-  fs.appendFileSync('input.txt', '\ndone\n', (err) => {
-    if (err) throw err;
-  });
-  fs.appendFileSync('input.txt', trainCsv, (err) => {
-    if (err) throw err;
-  });
-  fs.appendFileSync('input.txt', 'done\n', (err) => {
-    if (err) throw err;
-  });
-  fs.appendFileSync('input.txt', testCsv, (err) => {
-    if (err) throw err;
-  });
-  fs.appendFileSync('input.txt', 'done\n', (err) => {
-    if (err) throw err;
-  });
 
    // call to c++ algorithm that generate "output.csv"
-  
+    var outputPath = path.join(__dirname, '../controller/') + 'output.csv';
+    // Hello John!
+    var inputTrainPath = path.join(__dirname, '../controller/')+trainCsvPath.toString();
+    var inputTestPath = path.join(__dirname, '../controller/') + testCsvPath.toString();
+    algorithms.hybridAlgo(inputTrainPath.toString(), inputTestPath.toString(), outputPath.toString());
+    ///////////////////////////////////////////
   let outputJSON = csvToJson.fieldDelimiter(',').getJsonFromCsv("output.csv");
   // outputJSON = fs.readFileSync("output.json").toString();
   return JSON.stringify(outputJSON);
