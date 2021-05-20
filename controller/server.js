@@ -22,12 +22,6 @@ app.get('/', (req, res) => {
     res.sendFile('./index.html');
 });
 
-app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
-    var result = model.detect(req.params.algorithm, req.params.trainCSV, req.params.testCSV);
-    res.write(result);
-    res.end();
-});
-
 app.post('/detect', (req, res) => {
     var algo;
     var algoIndex = req.body.algo;
@@ -50,4 +44,10 @@ app.post('/detect', (req, res) => {
     fullPath = fullPath.concat('/')
     fullPath = fullPath.concat('test.csv')
     res.redirect(307, fullPath);
+});
+
+app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
+    var result = model.detect(req.params.algorithm, req.params.trainCSV, req.params.testCSV);
+    res.write(result);
+    res.end();
 });
