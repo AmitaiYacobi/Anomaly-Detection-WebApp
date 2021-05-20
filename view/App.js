@@ -60,7 +60,7 @@ function showFile() {
   }
 }
 
-// Convert cs file into JSON
+// Convert csv file into JSON
 function csvJSON(csv) {
   var data = d3.csvParse(csv);
   var headers = Object.keys(data[0]);
