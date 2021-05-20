@@ -18,7 +18,12 @@
             <h1>Anomaly Detection Server</h1>
         </div>
     </nav>
-    <form action="/detect" method="POST" enctype="multipart/form-data" target="detection">
+    <script>
+        function submitAlert() {
+            alert("It may take a few seconds...");
+        }
+    </script>
+    <form action="/detect" onsubmit="submitAlert()" method="POST" enctype="multipart/form-data" target="detection">
         <select required id="algorithm-select" name="algo">
             <option value="" disabled selected>Select Algorithm:</option>
             <option value="1" name="regression">Regression</option>
