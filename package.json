@@ -14,11 +14,13 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "node server.js"
+    "preinstall": "npm i node-addon-api && npm i express && npm i express-fileupload && npm i convert-csv-to-json && npm i d3 && npm i bindings",
+    "install": "node-gyp rebuild",
+    "start": "cd controller && node server.js"
   },
   "name": "anomaly-detection-webapp",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AmitaiYacobi/Anomaly-Detection-WebApp.git"

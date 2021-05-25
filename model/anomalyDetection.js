@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.static('..'));
 
-const algorithms = require('../addon');
+const algorithms = require('..');
 path = require('path')
 
 // Convert cs file into JSON
