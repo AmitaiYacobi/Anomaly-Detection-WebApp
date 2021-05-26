@@ -38,6 +38,9 @@ app.post('/detect', (req, res) => {
     fs.writeFileSync('test.csv', testCsv, (err) => {
         if (err) throw err;
     });
+    fs.writeFileSync('output.csv', "", (err) => {
+        if (err) throw err;
+    });
     fullPath = fullPath.concat(algo)
     fullPath = fullPath.concat('/')
     fullPath = fullPath.concat('train.csv')
