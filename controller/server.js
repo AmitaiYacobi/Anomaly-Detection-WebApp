@@ -52,5 +52,14 @@ app.post('/detect', (req, res) => {
 app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
     var result = model.detect(req.params.algorithm, req.params.trainCSV, req.params.testCSV);
     res.write(result);
+    fs.unlink('train.csv', (err) => {
+        if (err) throw err;
+    });
+    fs.unlink('test.csv', (err) => {
+        if (err) throw err;
+    });
+    fs.unlink('output.csv', (err) => {
+        if (err) throw err;
+    });
     res.end();
 });
