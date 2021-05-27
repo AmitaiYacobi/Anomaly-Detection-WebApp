@@ -1,6 +1,6 @@
 # Anomaly-Detection-WebApp
 
-### SUMMARY
+### Summary
 This Project is a web application that is used for detecting anomalies in filghts.<br />
 In the app, the user needs to upload two csv files: one of a normal flight for the learning step and other of a regular flight for the detecting step.<br />
 After the user uploads the files, he will be able to see all the anomalies that occured during the flight.<br />
