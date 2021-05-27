@@ -8,10 +8,16 @@ This MVC project is coded in node.js and also uses the C++ files from the Anomal
 
 ### What should you install and download?
 After cloning this repository, first make sure you have node.js installed on your PC, then open the terminal inside the project's directory and type the following commands:<br />
-- npm install<br />
-- npm start 
+
+- ``npm install``<br />
+- ``npm start ``
 <br/>
 Then you can go to your browser and open it on "localhost:8080" and you will see the app.
+
+<clipboard-copy for="blob-path" class="btn btn-sm BtnGroup-item">
+  Copy path
+</clipboard-copy>
+<div id="blob-path">src/index.js</div>
 
 ### Here you can see the UML of the project
 
