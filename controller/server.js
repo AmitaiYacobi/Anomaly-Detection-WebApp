@@ -50,8 +50,50 @@ app.post('/detect', (req, res) => {
 });
 
 app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
-    var result = model.detect(req.params.algorithm, req.params.trainCSV, req.params.testCSV);
-    res.write(result);
+    var outputJson = model.detect(req.params.algorithm, req.params.trainCSV, req.params.testCSV);
+    var data = JSON.parse(outputJson);
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('<div><html>');
+    res.write('<center>');
+    res.write('<head>');
+
+    res.write('<style> .styled-table {border-collapse: collapse;margin: 25px 0;font-size: 0.9em;font-family: sans-serif; min-width: 400px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}');
+    res.write('.styled-table thead tr {background-color: #1974D2;color: #ffffff;text-align: center;}');
+    res.write('.styled-table th,.styled-table td {padding: 12px 15px;}');
+    res.write('.styled-table tbody tr {background-color: #FFFFFF; border-bottom: 1px solid #dddddd;text-align: center;}');
+    res.write('.styled-table tbody tr: nth-of-type(even) {background-color: #f3f3f3;}');
+    res.write('.styled-table tbody tr: last-of-type {border-bottom: 2px solid #009879;}');
+    res.write('.styled-table tbody tr.active-row {font-weight: bold;color: #009879;}</style>');
+
+    res.write('</head>');
+    res.write('<body>');
+    res.write('<table class="styled-table" >');
+    res.write('<thead><tr>');
+    for (const key in data[0]) {
+        res.write('<th>');
+        res.write(key.replace("_"," "));
+        res.write('</th>');
+        
+    }
+    res.write('</tr></thead><tbody>');
+    for (var i = 0; i < data.length; i++) {
+        res.write('<tr>');
+        for (const key in data[i]) {
+            res.write('<td>');
+            res.write(data[i][key].replace(/-/g, " ").replace(/_/g, "  -  "));
+            res.write('</td>');
+
+        }
+        res.write('</tr > ');
+    }
+    res.write('</tbody > ');
+    res.write('</table>');
+    res.write('</form>');
+    res.write('</body>');
+    res.write('</center>');
+    res.write('</html>');
+    res.write('</div>');
+
     fs.unlink('train.csv', (err) => {
         if (err) throw err;
     });

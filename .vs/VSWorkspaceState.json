@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\addon",
     "\\controller",
     "\\model",
     "\\view"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\controller\\server.js",
   "PreviewInSolutionExplorer": false
 }
