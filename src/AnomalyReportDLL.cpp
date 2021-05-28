@@ -11,7 +11,7 @@ string CreateAnomalyReportSimple(string inputTrainPath, string inputTestPath, st
 	TimeSeries ts2(inputTestPath.c_str());
 	vector<AnomalyReport> reports = ad.detect(ts2);
 	
-	std.write("Time (row),Correlated Features\n");
+	std.write("Time_(row),Correlated_Features\n");
 	vector<AnomalyReport>::iterator it = reports.begin();
 	for (; it != reports.end(); it++)
 	{
