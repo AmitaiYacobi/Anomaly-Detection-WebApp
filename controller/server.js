@@ -38,9 +38,6 @@ app.post('/detect', (req, res) => {
     fs.writeFileSync('test.csv', testCsv, (err) => {
         if (err) throw err;
     });
-    fs.writeFileSync('output.csv', "", (err) => {
-        if (err) throw err;
-    });
     fullPath = fullPath.concat(algo)
     fullPath = fullPath.concat('/')
     fullPath = fullPath.concat('train.csv')
@@ -50,6 +47,9 @@ app.post('/detect', (req, res) => {
 });
 
 app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
+    fs.writeFileSync('output.csv', "", (err) => {
+        if (err) throw err;
+    });
     var outputJson = model.detect(req.params.algorithm, req.params.trainCSV, req.params.testCSV);
     var data = JSON.parse(outputJson);
     res.writeHead(200, { 'Content-Type': 'text/html' });

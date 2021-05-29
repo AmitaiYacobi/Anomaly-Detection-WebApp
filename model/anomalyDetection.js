@@ -31,21 +31,16 @@ function csvJSON(csv) {
 }
 
 function detect(option, trainCsvPath, testCsvPath) {
-
-    // call to c++ algorithm that generate "output.csv"
     var outputPath = path.join(__dirname, '../controller/') + 'output.csv';
-    var inputTrainPath = path.join(__dirname, '../controller/') + trainCsvPath.toString();
-    var inputTestPath = path.join(__dirname, '../controller/') + testCsvPath.toString();
+    // call to c++ algorithm that generate "output.csv"
     if (option == "Hybrid") {
-        algorithms.hybridAlgo(inputTrainPath.toString(), inputTestPath.toString(), outputPath.toString());
+        algorithms.hybridAlgo(trainCsvPath.toString(), testCsvPath.toString(), outputPath.toString());
     }
     else {
-        algorithms.simpleAlgo(inputTrainPath.toString(), inputTestPath.toString(), outputPath.toString());
+        algorithms.simpleAlgo(trainCsvPath.toString(), testCsvPath.toString(), outputPath.toString());
     }
     let outputJSON = csvToJson.fieldDelimiter(',').getJsonFromCsv("output.csv");
     return JSON.stringify(outputJSON);
-
-
 }
 
 module.exports.detect = detect
