@@ -4,7 +4,7 @@
 This Project is a web application that is used for detecting anomalies in filghts.<br />
 In the app, the user needs to upload two csv files: one of a normal flight for the learning step and other of a random flight for the detecting step.<br />
 After the user uploads the files, he will be able to see all the anomalies that occured during the flight.<br />
-This MVC project is coded in node.js and also uses the C++ files from the Anomaly-Detection project.
+This MVC project is coded in node.js and also uses the C++ files from the "Anomaly-Detection" project.
 
 ### What should you download and install?
 After cloning this repository, first make sure you have node.js installed on your PC, if you dont have, you can download it from [here](https://nodejs.org/en/download/).<br/>
