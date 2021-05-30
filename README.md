@@ -2,7 +2,7 @@
 
 ### Summary
 This Project is a web application that is used for detecting anomalies in filghts.<br />
-In the app, the user needs to upload two csv files: one of a normal flight for the learning step and other of a regular flight for the detecting step.<br />
+In the app, the user needs to upload two csv files: one of a normal flight for the learning step and other of a random flight for the detecting step.<br />
 After the user uploads the files, he will be able to see all the anomalies that occured during the flight.<br />
 This MVC project is coded in node.js and also uses the C++ files from the Anomaly-Detection project.
 
@@ -13,7 +13,7 @@ Now open the terminal inside the project's directory and type the following comm
 - ``npm install``<br />
 - ``npm start ``
 
-Now you can go to your browser and open it on ``"localhost:8080"`` and you will see the app.
+Now you can go to your browser and open it on ``"localhost:8080"`` and you will see the app.<br/>
 The app should look like this:<br/>
 
 ![WhatsApp Image 2021-05-30 at 10 52 02](https://user-images.githubusercontent.com/71650499/120097018-04091c00-c137-11eb-9fef-3215efd515b3.png)<br/><br/>
