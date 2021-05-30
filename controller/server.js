@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const model = require('../model/anomalyDetection')
 const fs = require('fs');
+const { html } = require('d3-fetch');
 
 const app = express();
 
@@ -18,32 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.sendFile('./index.html');
-});
-
-app.post('/detect', (req, res) => {
-    var algo;
-    var algoIndex = req.body.algo;
-    if (algoIndex == 1)
-        algo = 'Regression';
-    else if (algoIndex == 2)
-        algo = 'Hybrid';
-    var fullPath = '/detect/'
-    var trainCsv = req.files.train.data.toString();
-    var testCsv = req.files.test.data.toString();
-    fs.writeFileSync('train.csv', trainCsv, (err) => {
-        if (err) throw err;
-    });
-    fs.writeFileSync('test.csv', testCsv, (err) => {
-        if (err) throw err;
-    });
-    fs.writeFileSync('output.csv', "", (err) => {
-        if (err) throw err;
-    });
-    var outputJson = model.detect(algo, 'train.csv', 'test.csv');
+function generateAnomaliesHtml(outputJson) {
     var data = JSON.parse(outputJson);
-    res.writeHead(200, { 'Content-Type': 'text/html' });
     var htmlFile = '';
     htmlFile +='<div><html>';
     htmlFile +='<center>';
@@ -86,7 +63,37 @@ app.post('/detect', (req, res) => {
     htmlFile +='</center>';
     htmlFile +='</html>';
     htmlFile += '</div>';
-    res.write(htmlFile);
+    return htmlFile;
+}
+
+app.get('/', (req, res) => {
+    res.sendFile('./index.html');
+});
+
+app.post('/detect', (req, res) => {
+    var algo;
+    var algoIndex = req.body.algo;
+    if (algoIndex == 1)
+        algo = 'Regression';
+    else if (algoIndex == 2)
+        algo = 'Hybrid';
+    
+    var trainCsv = req.files.train.data.toString();
+    var testCsv = req.files.test.data.toString();
+    fs.writeFileSync('train.csv', trainCsv, (err) => {
+        if (err) throw err;
+    });
+    fs.writeFileSync('test.csv', testCsv, (err) => {
+        if (err) throw err;
+    });
+    fs.writeFileSync('output.csv', "", (err) => {
+        if (err) throw err;
+    });
+
+    var outputJson = model.detect(algo, 'train.csv', 'test.csv');
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write(generateAnomaliesHtml(outputJson));
+    
     fs.unlink('train.csv', (err) => {
         if (err) throw err;
     });
