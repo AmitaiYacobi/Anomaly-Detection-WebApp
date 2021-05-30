@@ -30,7 +30,6 @@ Here you can see the hierarchy of the files in the project:<br/><br/>
 
 #### Here we have a nice [video](https://youtu.be/ji8ed4sKWv0) that illustrates how to use the different features in the app.<br/><br/>
 
-https://youtu.be/ji8ed4sKWv0
 
 ### Developers:
  - Ron Eliav
