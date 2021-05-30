@@ -70,7 +70,7 @@ app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
     res.write('<table class="styled-table" >');
     res.write('<thead><tr>');
     if (outputJson == '[]') {
-        res.write('<th>The algorithm didn\'t found any anomalies</th>');
+        res.write('<th>The algorithm didn\'t find any anomalies</th>');
     }
     for (const key in data[0]) {
         res.write('<th>');
