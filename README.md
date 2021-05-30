@@ -25,9 +25,9 @@ That's the app. We hope you will enjoy it.
 
 
 ### UML of the project
-Here you can see the hierarchy of the files in the project:<br/>
+Here you can see the hierarchy of the files in the project:<br/><br/>
 ![image](https://user-images.githubusercontent.com/71728836/120083964-1a7e8b80-c0d5-11eb-95b9-84360b7d2a15.png)
 
 
-#### Here you can watch a nice video that illustrates how to use the different features in the app.
+#### Here we have a nice video that illustrates how to use the different features in the app.
  
