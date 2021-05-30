@@ -20,6 +20,8 @@ Then you can go to your browser and open it on "localhost:8080" and you will see
 <div id="blob-path">src/index.js</div>
 
 ### Here you can see the UML of the project
+![image](https://user-images.githubusercontent.com/71728836/120083964-1a7e8b80-c0d5-11eb-95b9-84360b7d2a15.png)
+
 
 #### Here you can watch a nice video that illustrates how to use the different features in the app.
  
