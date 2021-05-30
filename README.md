@@ -13,7 +13,6 @@ Now open the terminal inside the project's directory and type the following comm
 - ``npm install``<br />
 - ``npm start ``
 
-Then, enter to "controller" directory with the terminal by ``cd controller`` and run the following command: ``node server.js``.<br/>
 Now you can go to your browser and open it on ``"localhost:8080"`` and you will see the app.
 The app should look like this:<br/>
 
