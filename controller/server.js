@@ -81,8 +81,7 @@ app.post('/detect', (req, res) => {
         htmlFile +='</tr > ';
     }
     htmlFile +='</tbody > ';
-    htmlFile +='</table>';
-    htmlFile +='</form>';
+    htmlFile += '</table>';
     htmlFile +='</body>';
     htmlFile +='</center>';
     htmlFile +='</html>';
