@@ -6,7 +6,7 @@ In the app, the user needs to upload two csv files: one of a normal flight for t
 After the user uploads the files, he will be able to see all the anomalies that occured during the flight.<br />
 This MVC project is coded in node.js and also uses the C++ files from the Anomaly-Detection project.
 
-### What should you install and download?
+### What should you download and install?
 After cloning this repository, first make sure you have node.js installed on your PC, if you dont have, you can download it from [here](https://nodejs.org/en/download/).<br/>
 Now open the terminal inside the project's directory and type the following commands:<br />
 
