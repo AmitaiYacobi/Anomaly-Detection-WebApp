@@ -7,19 +7,25 @@ After the user uploads the files, he will be able to see all the anomalies that 
 This MVC project is coded in node.js and also uses the C++ files from the Anomaly-Detection project.
 
 ### What should you install and download?
-After cloning this repository, first make sure you have node.js installed on your PC, then open the terminal inside the project's directory and type the following commands:<br />
+After cloning this repository, first make sure you have node.js installed on your PC, if you dont have, you can download it from [here](https://nodejs.org/en/download/).<br/>
+Now open the terminal inside the project's directory and type the following commands:<br />
 
 - ``npm install``<br />
 - ``npm start ``
-<br/>
-Then you can go to your browser and open it on "localhost:8080" and you will see the app.
+
+Then, enter to "controller" directory with the terminal by ``cd controller`` and run the following command: ``node server.js``.<br/>
+Now you can go to your browser and open it on ``"localhost:8080"`` and you will see the app.
 The app should look like this:<br/>
-![WhatsApp Image 2021-05-30 at 10 52 02](https://user-images.githubusercontent.com/71650499/120096862-6d3c5f80-c136-11eb-8b35-8ce1ba50fa5b.jpeg)
+
+![WhatsApp Image 2021-05-30 at 10 52 02](https://user-images.githubusercontent.com/71650499/120097018-04091c00-c137-11eb-9fef-3215efd515b3.png)<br/><br/>
+As you can see, you need to select an algorithm for the detection and also need to upload the csv files mentioned above.<br/>
+After clicking on the "Upload" button you will get a table with all the anomalies in it. It should look like this:<br/><br/>
+![WhatsApp Image 2021-05-30 at 10 52 35](https://user-images.githubusercontent.com/71650499/120097146-914c7080-c137-11eb-9699-0372f17fe8ad.png)<br/>
+That's the app. We hope you will enjoy it.
 
 
-
-
-### Here you can see the UML of the project
+### UML of the project
+Here you can see the hierarchy of the files in the project:<br/>
 ![image](https://user-images.githubusercontent.com/71728836/120083964-1a7e8b80-c0d5-11eb-95b9-84360b7d2a15.png)
 
 
