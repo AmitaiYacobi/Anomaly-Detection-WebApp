@@ -102,7 +102,7 @@ vector<AnomalyReport> SimpleAnomalyDetector::detect(const TimeSeries &ts)
 			{
 				if (isAnomalous(ts.getVectorByFeature(c.feature1).at(timeStep), ts.getVectorByFeature(c.feature2).at(timeStep), c))
 				{
-					string desc = ts.trans(c.feature1) + "," + ts.trans(c.feature2);
+					string desc = ts.trans(c.feature1) + " - " + ts.trans(c.feature2);
 					report.push_back(AnomalyReport(desc, timeStep + 1));
 				}
 			}

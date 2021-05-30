@@ -69,6 +69,9 @@ app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
     res.write('<body>');
     res.write('<table class="styled-table" >');
     res.write('<thead><tr>');
+    if (outputJson == '[]') {
+        res.write('<th>The algorithm didn\'t found any anomalies</th>');
+    }
     for (const key in data[0]) {
         res.write('<th>');
         res.write(key.replace("_"," "));
@@ -80,9 +83,8 @@ app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
         res.write('<tr>');
         for (const key in data[i]) {
             res.write('<td>');
-            res.write(data[i][key].replace(/-/g, " ").replace(/_/g, "  -  "));
+            res.write(data[i][key]);
             res.write('</td>');
-
         }
         res.write('</tr > ');
     }
