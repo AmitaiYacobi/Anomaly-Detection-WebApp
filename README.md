@@ -13,11 +13,11 @@ After cloning this repository, first make sure you have node.js installed on you
 - ``npm start ``
 <br/>
 Then you can go to your browser and open it on "localhost:8080" and you will see the app.
+The app should look like this:<br/>
+![WhatsApp Image 2021-05-30 at 10 52 02](https://user-images.githubusercontent.com/71650499/120096862-6d3c5f80-c136-11eb-8b35-8ce1ba50fa5b.jpeg)
 
-<clipboard-copy for="blob-path" class="btn btn-sm BtnGroup-item">
-  Copy path
-</clipboard-copy>
-<div id="blob-path">src/index.js</div>
+
+
 
 ### Here you can see the UML of the project
 ![image](https://user-images.githubusercontent.com/71728836/120083964-1a7e8b80-c0d5-11eb-95b9-84360b7d2a15.png)
