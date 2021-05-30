@@ -38,64 +38,56 @@ app.post('/detect', (req, res) => {
     fs.writeFileSync('test.csv', testCsv, (err) => {
         if (err) throw err;
     });
-    fullPath = fullPath.concat(algo)
-    fullPath = fullPath.concat('/')
-    fullPath = fullPath.concat('train.csv')
-    fullPath = fullPath.concat('/')
-    fullPath = fullPath.concat('test.csv')
-    res.redirect(307, fullPath);
-});
-
-app.post('/detect/:algorithm/:trainCSV/:testCSV', (req, res) => {
     fs.writeFileSync('output.csv', "", (err) => {
         if (err) throw err;
     });
-    var outputJson = model.detect(req.params.algorithm, req.params.trainCSV, req.params.testCSV);
+    var outputJson = model.detect(algo, 'train.csv', 'test.csv');
     var data = JSON.parse(outputJson);
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write('<div><html>');
-    res.write('<center>');
-    res.write('<head>');
+    var htmlFile = '';
+    htmlFile +='<div><html>';
+    htmlFile +='<center>';
+    htmlFile +='<head>';
 
-    res.write('<style> .styled-table {border-collapse: collapse;margin: 25px 0;font-size: 0.9em;font-family: sans-serif; min-width: 400px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}');
-    res.write('.styled-table thead tr {background-color: #1974D2;color: #ffffff;text-align: center;}');
-    res.write('.styled-table th,.styled-table td {padding: 12px 15px;}');
-    res.write('.styled-table tbody tr {background-color: #FFFFFF; border-bottom: 1px solid #dddddd;text-align: center;}');
-    res.write('.styled-table tbody tr: nth-of-type(even) {background-color: #f3f3f3;}');
-    res.write('.styled-table tbody tr: last-of-type {border-bottom: 2px solid #009879;}');
-    res.write('.styled-table tbody tr.active-row {font-weight: bold;color: #009879;}</style>');
+    htmlFile +='<style> .styled-table {border-collapse: collapse;margin: 25px 0;font-size: 0.9em;font-family: sans-serif; min-width: 400px;box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);}';
+    htmlFile +='.styled-table thead tr {background-color: #1974D2;color: #ffffff;text-align: center;}';
+    htmlFile +='.styled-table th,.styled-table td {padding: 12px 15px;}';
+    htmlFile +='.styled-table tbody tr {background-color: #FFFFFF; border-bottom: 1px solid #dddddd;text-align: center;}';
+    htmlFile +='.styled-table tbody tr: nth-of-type(even) {background-color: #f3f3f3;}';
+    htmlFile +='.styled-table tbody tr: last-of-type {border-bottom: 2px solid #009879;}';
+    htmlFile +='.styled-table tbody tr.active-row {font-weight: bold;color: #009879;}</style>';
 
-    res.write('</head>');
-    res.write('<body>');
-    res.write('<table class="styled-table" >');
-    res.write('<thead><tr>');
+    htmlFile +='</head>';
+    htmlFile +='<body>';
+    htmlFile +='<table class="styled-table" >';
+    htmlFile +='<thead><tr>';
     if (outputJson == '[]') {
-        res.write('<th>The algorithm didn\'t find any anomalies</th>');
+        htmlFile +='<th>The algorithm didn\'t find any anomalies</th>';
     }
     for (const key in data[0]) {
-        res.write('<th>');
-        res.write(key.replace("_"," "));
-        res.write('</th>');
-        
-    }
-    res.write('</tr></thead><tbody>');
-    for (var i = 0; i < data.length; i++) {
-        res.write('<tr>');
-        for (const key in data[i]) {
-            res.write('<td>');
-            res.write(data[i][key]);
-            res.write('</td>');
-        }
-        res.write('</tr > ');
-    }
-    res.write('</tbody > ');
-    res.write('</table>');
-    res.write('</form>');
-    res.write('</body>');
-    res.write('</center>');
-    res.write('</html>');
-    res.write('</div>');
+        htmlFile +='<th>';
+        htmlFile +=key.replace("_", " ");
+        htmlFile +='</th>';
 
+    }
+    htmlFile +='</tr></thead><tbody>';
+    for (var i = 0; i < data.length; i++) {
+        htmlFile +='<tr>';
+        for (const key in data[i]) {
+            htmlFile +='<td>';
+            htmlFile += data[i][key];
+            htmlFile +='</td>';
+        }
+        htmlFile +='</tr > ';
+    }
+    htmlFile +='</tbody > ';
+    htmlFile +='</table>';
+    htmlFile +='</form>';
+    htmlFile +='</body>';
+    htmlFile +='</center>';
+    htmlFile +='</html>';
+    htmlFile += '</div>';
+    res.write(htmlFile);
     fs.unlink('train.csv', (err) => {
         if (err) throw err;
     });
