@@ -28,7 +28,7 @@ Here you can see the hierarchy of the files in the project:<br/><br/>
 ![image](https://user-images.githubusercontent.com/71728836/120083964-1a7e8b80-c0d5-11eb-95b9-84360b7d2a15.png)
 
 
-#### Here we have a nice video that illustrates how to use the different features in the app.<br/><br/>
+#### Here we have a nice [video](https://youtu.be/ji8ed4sKWv0) that illustrates how to use the different features in the app.<br/><br/>
 
 https://youtu.be/ji8ed4sKWv0
 
